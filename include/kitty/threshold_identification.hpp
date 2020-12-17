@@ -98,7 +98,7 @@ bool is_threshold( const TT& tt, std::vector<int64_t>* plf = nullptr )
     posandneg = false;
     auto const cof0 = cofactor0(tt,i);
     auto const cof1 = cofactor1(tt,i);
-    for (auto k = 0 ; k < (powerof2((tt.num_vars()-1))); k ++ ){
+    for (auto k = 0 ; k < (powerof2((tt.num_vars()-1))); k ++ ){ 
       if(get_bit(cof0,k)< get_bit(cof1,k)){
         pos = true ; 
       }
