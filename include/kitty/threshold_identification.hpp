@@ -102,11 +102,15 @@ bool is_threshold( const TT& tt, std::vector<int64_t>* plf = nullptr )
       if(get_bit(cof0,k)< get_bit(cof1,k)){
         pos = true ; 
       }
-      else if(get_bit(cof0,k)> get_bit(cof1,k)) {
-        neg = true ;
-      }
-      else if (get_bit(cof0,k) == get_bit(cof1,k)){
-        posandneg = true ;
+      else {
+        if(get_bit(cof0,k)> get_bit(cof1,k)) {
+          neg = true ;
+        }
+        else{
+          if (get_bit(cof0,k) == get_bit(cof1,k)){
+            posandneg = true ;
+          }
+        }
       }
     }
     if (pos == neg){ // The case where a variable has positive and negative bits
