@@ -92,7 +92,7 @@ bool is_threshold( const TT& tt, std::vector<int64_t>* plf = nullptr )
   bool pos = false;
   bool posandneg = false;
 // Check if a truth table is positive or negative or binate and return false if it is binate 
-  for (unsigned int i = 0 ; i < tt.num_vars() ; i++){
+ for (unsigned int i = 0 ; i < tt.num_vars() ; i++){
     neg = false;
     pos = false;
     posandneg = false;
@@ -105,30 +105,13 @@ bool is_threshold( const TT& tt, std::vector<int64_t>* plf = nullptr )
       else if(get_bit(cof0,k)> get_bit(cof1,k)) {
         neg = true ;
       }
-      else if (get_bit(cof0,k) == get_bit(cof1,k)){
-        posandneg = true ;
-      }
-      else{
-        
-      }
     }
-    if (pos == neg){ // The case where a variable has positive and negative bits
-      if(posandneg != true){ // If the bits are equal  pos = false and neg = false so pos = neg but we don't want to return false
+    if (pos && neg){ // The case where a variable has positive and negative bits
         return false;
-      }
-      else{
-      }
+    }
+    else{
+    }
      
-    }
-    else{
-      
-    }
-    if( pos && neg && posandneg){
-      return false ;
-
-    }
-    else{
-    }
     if (neg == true){
         negativevect.push_back(i); // Store the negatives variables to use them for linear_form
         tt2 = flip(tt2, i); // Flip the negatives variables in order to work with a positive truth table
