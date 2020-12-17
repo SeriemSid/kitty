@@ -88,30 +88,28 @@ bool is_threshold( const TT& tt, std::vector<int64_t>* plf = nullptr )
   const auto onset_cube = isop(tt2);
   const auto offset_cube = isop(unary_not(tt2));
 // Boolean that we help us to know if we find a positive and a negative bit to return false if it's the case
-  bool neg = false;  
-  bool pos = false;
-  bool posandneg = false;
+
 // Check if a truth table is positive or negative or binate and return false if it is binate 
- for (unsigned int i = 0 ; i < tt.num_vars() ; i++){
-    neg = false;
-    pos = false;
-    posandneg = false;
+  for (unsigned int i = 0 ; i < tt.num_vars() ; i++){
+    bool neg = false;  
+    bool pos = false;
     auto const cof0 = cofactor0(tt,i);
     auto const cof1 = cofactor1(tt,i);
     for (auto k = 0 ; k < (powerof2((tt.num_vars()-1))); k ++ ){
       if(get_bit(cof0,k)< get_bit(cof1,k)){
         pos = true ; 
       }
-      else if(get_bit(cof0,k)> get_bit(cof1,k)) {
+      else if (get_bit(cof0,k)> get_bit(cof1,k)) {
         neg = true ;
       }
+
     }
     if (pos && neg){ // The case where a variable has positive and negative bits
         return false;
     }
     else{
     }
-     
+
     if (neg == true){
         negativevect.push_back(i); // Store the negatives variables to use them for linear_form
         tt2 = flip(tt2, i); // Flip the negatives variables in order to work with a positive truth table
@@ -245,7 +243,8 @@ bool is_threshold( const TT& tt, std::vector<int64_t>* plf = nullptr )
                 if ( lp != NULL )
                 /* clean up such that all used memory by lpsolve is freed */
                     delete_lp( lp );
-                return true;
+                    return true;
             }
+            return false;
         }
     }
