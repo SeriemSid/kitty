@@ -153,7 +153,7 @@ bool is_threshold( const TT& tt, std::vector<int64_t>* plf = nullptr )
           for(unsigned int j = 0; j <= tt.num_vars(); j++){
             colno[0] = j+1;
             row[j] = 1;
-            add_constraintex(lp, 1, row, colno, GE, 0); // w1 + w2 ... + T > 0 
+            add_constraintex(lp, 1, row, colno, GE, 0); // w1,w2, ... , T > 0 
           }
         }
         if (ret == 0) {
