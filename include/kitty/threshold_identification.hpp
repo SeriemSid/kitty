@@ -102,26 +102,32 @@ bool is_threshold( const TT& tt, std::vector<int64_t>* plf = nullptr )
       if(get_bit(cof0,k)< get_bit(cof1,k)){
         pos = true ; 
       }
-      else {
-        if(get_bit(cof0,k)> get_bit(cof1,k)) {
-          neg = true ;
-        }
-        else{
-          if (get_bit(cof0,k) == get_bit(cof1,k)){
-            posandneg = true ;
-          }
-        }
+      else if(get_bit(cof0,k)> get_bit(cof1,k)) {
+        neg = true ;
+      }
+      else if (get_bit(cof0,k) == get_bit(cof1,k)){
+        posandneg = true ;
+      }
+      else{
+        
       }
     }
     if (pos == neg){ // The case where a variable has positive and negative bits
       if(posandneg != true){ // If the bits are equal  pos = false and neg = false so pos = neg but we don't want to return false
         return false;
       }
+      else{
+      }
      
+    }
+    else{
+      
     }
     if( pos && neg && posandneg){
       return false ;
 
+    }
+    else{
     }
     if (neg == true){
         negativevect.push_back(i); // Store the negatives variables to use them for linear_form
