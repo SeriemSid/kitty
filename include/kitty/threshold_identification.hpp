@@ -247,6 +247,6 @@ namespace kitty
                 delete_lp( lp );
             return true;
         }
-
+      return false;
     }
 }
